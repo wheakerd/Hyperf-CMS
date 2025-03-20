@@ -1,0 +1,12 @@
+.settings/
+.idea/
+.git/
+.vscode/
+runtime/
+vendor/
+target/
+assets/
+**/*.phar
+**/*.phar.gz
+composer.lock
+.env
