@@ -3,16 +3,22 @@ declare(strict_types=1);
 
 namespace App\Security;
 
-use App\Library\JsonWebToken\JWS;
-use Hyperf\Config\Annotation\Value;
-
 /**
  * @AdminSecurity
  * @\App\Security\AdminSecurity
  */
-final class AdminSecurity extends JWS
+final class AdminSecurity
 {
+	public function __construct(private string $key)
+	{
+	}
 
-	#[Value('jwk.admin')]
-	protected string $key;
+	/**
+	 * 校验令牌凭证
+	 *
+	 * @return void
+	 */
+	public function check(string $token)
+	{
+	}
 }

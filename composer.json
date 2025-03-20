@@ -2,11 +2,13 @@
     "name": "hyperf/hyperf-skeleton",
     "type": "project",
     "scripts": {
+        "classes": "@composer dump-autoload -o",
         "dev": [
             "rm -rf runtime/container",
             "@php bin/hyperf.php server:watch"
         ],
         "start": [
+            "rm -rf runtime/container",
             "Composer\\Config::disableProcessTimeout",
             "php bin/hyperf.php start"
         ],

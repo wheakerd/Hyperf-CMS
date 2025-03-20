@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Middleware\Http;
+namespace App\Middleware;
 
 use Hyperf\Context\Context;
 use Psr\Http\Message\ResponseInterface;
