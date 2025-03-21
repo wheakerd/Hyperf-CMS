@@ -15,6 +15,8 @@ use Hyperf\Validation\Annotation\Scene;
 use Psr\Http\Message\ResponseInterface;
 
 /**
+ * 零碎功能
+ *
  * @IndexController
  * @\App\Controller\Admin\IndexController
  */
