@@ -5,8 +5,6 @@ use App\Contract\ResponseContract;
 use Hyperf\HttpServer\Router\Router;
 use Psr\Http\Message\ResponseInterface;
 
-//Router::get('/', fn(ResponseContract $response) => $response->redirect('/web'));
-
 //  加载资源文件
 Router::get('/public/{path:.+}', function (string $path, ResponseContract $response): ResponseInterface|bool {
 	$filepath = ROOT_PATH . "/assets/public/$path";

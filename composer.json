@@ -15,6 +15,10 @@
         "build:pro": [
             "rm -rf runtime/container",
             "@php bin/hyperf.php run:build"
+        ],
+        "web": [
+            "cd assets/web",
+            "/home/wheakerd/.nvm/versions/node/v22.13.0/bin/pnpm --dir assets/web run dev"
         ]
     },
     "require": {

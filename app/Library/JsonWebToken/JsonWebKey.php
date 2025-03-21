@@ -46,10 +46,10 @@ final class JsonWebKey
 	{
 		return JWKFactory::createFromSecret(
 			$secret,       // The shared secret
-			[                      // Optional additional members
-			                       'alg' => 'HS256',
-			                       'use' => 'sig',
-			],
+			[
+				'alg' => 'HS256',
+				'use' => 'sig',
+			],             // Optional additional members
 		);
 	}
 

@@ -102,7 +102,6 @@ final class JsonWebSignature
 	 */
 	public function check(string $token): bool
 	{
-
 		$serializerManager = new JWSSerializerManager(
 			[
 				new CompactSerializer(),

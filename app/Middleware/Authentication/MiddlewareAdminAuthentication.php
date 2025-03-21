@@ -35,7 +35,7 @@ final readonly class MiddlewareAdminAuthentication implements MiddlewareInterfac
 	 */
 	public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
 	{
-		$token = $request->getHeaderLine('token');
+		$token = $request->getHeaderLine('Authorization');
 		if (!strlen($token)) {
 			return $this->response->auth('用户未登录！');
 		}

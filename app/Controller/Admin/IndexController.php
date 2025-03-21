@@ -31,6 +31,8 @@ final class IndexController extends AbstractHttpController
 	 * @param LoginValidator $loginValidator
 	 *
 	 * @return ResponseInterface
+	 *
+	 * @api /admin/index/login
 	 */
 	#[
 		RequestMapping(path: 'login', methods: ['POST']),
@@ -64,6 +66,8 @@ final class IndexController extends AbstractHttpController
 	 * 登出
 	 *
 	 * @return ResponseInterface
+	 *
+	 * @api /admin/index/logout
 	 */
 	#[
 		RequestMapping(path: 'logout', methods: ['POST']),

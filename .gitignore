@@ -5,7 +5,7 @@
 runtime/
 vendor/
 target/
-assets/
+assets/public/*
 **/*.phar
 **/*.phar.gz
 composer.lock
