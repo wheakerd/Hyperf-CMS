@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Abstract\AbstractHttpController;
-use App\Middleware\Authentication\MiddlewareAdminAuthentication;
-use App\Model\Admin\ModelAdminAdministrator;
+use App\Middleware\Http\AdminAuthenticationMiddleware;
+use App\Model\Admin\AdministratorModel;
 use App\Service\Admin\ServiceAdminAdministrator;
-use App\Validator\Admin\Index\LoginValidator;
+use App\Validator\Admin\AdministratorValidator;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\Middlewares;
 use Hyperf\HttpServer\Annotation\RequestMapping;
@@ -30,7 +30,7 @@ final class IndexController extends AbstractHttpController
 	/**
 	 * 登录
 	 *
-	 * @param LoginValidator $loginValidator
+	 * @param AdministratorValidator $loginValidator
 	 *
 	 * @return ResponseInterface
 	 *
@@ -40,7 +40,7 @@ final class IndexController extends AbstractHttpController
 		RequestMapping(path: 'login', methods: ['POST']),
 		Scene(scene: 'login', argument: 'loginValidator'),
 	]
-	public function login(LoginValidator $loginValidator): ResponseInterface
+	public function login(AdministratorValidator $loginValidator): ResponseInterface
 	{
 		$inputs = $loginValidator->validated();
 
@@ -48,8 +48,8 @@ final class IndexController extends AbstractHttpController
 		$password = $inputs['password'];
 
 		/**
-		 * @var string                  $token
-		 * @var ModelAdminAdministrator $userinfo
+		 * @var string             $token
+		 * @var AdministratorModel $userinfo
 		 */
 		[
 			$token,
@@ -74,7 +74,7 @@ final class IndexController extends AbstractHttpController
 	#[
 		RequestMapping(path: 'logout', methods: ['POST']),
 		Middlewares([
-			MiddlewareAdminAuthentication::class,
+			AdminAuthenticationMiddleware::class,
 		]),
 	]
 	public function logout(): ResponseInterface

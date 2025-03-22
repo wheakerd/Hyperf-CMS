@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Interface;
 
-use Hyperf\Database\Schema\Blueprint;
-
 /**
  * @SchemaInterface
  * @\App\Interface\SchemaInterface

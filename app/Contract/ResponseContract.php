@@ -85,18 +85,6 @@ final class ResponseContract extends Response
 		return $this->message($message, 500);
 	}
 
-	public function toJson(mixed $data): string
-	{
-		try {
-			$result = Json::encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		}
-		catch (Throwable $exception) {
-			throw new EncodingException($exception->getMessage(), (int)$exception->getCode(), $exception);
-		}
-
-		return $result;
-	}
-
 	/**
 	 * 返回创建好的事件流响应对象
 	 *
@@ -132,6 +120,18 @@ final class ResponseContract extends Response
 		$socket->header = $this->getResponse()->getHeaders();
 
 		return $socket;
+	}
+
+	public function toJson(mixed $data): string
+	{
+		try {
+			$result = Json::encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		}
+		catch (Throwable $exception) {
+			throw new EncodingException($exception->getMessage(), (int)$exception->getCode(), $exception);
+		}
+
+		return $result;
 	}
 
 	protected function getResponse(): ResponsePlusInterface

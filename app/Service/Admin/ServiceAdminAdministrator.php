@@ -5,7 +5,7 @@ namespace App\Service\Admin;
 
 use App\Dao\Admin\DaoAdminAdministrator;
 use App\Exception\CustomMessageException;
-use App\Model\Admin\ModelAdminAdministrator;
+use App\Model\Admin\AdministratorModel;
 use App\Proxy\DefaultRedisProxy;
 use App\Security\AdminSecurity;
 
@@ -28,9 +28,9 @@ final class ServiceAdminAdministrator
 	 *
 	 * @param int $id
 	 *
-	 * @return ModelAdminAdministrator|null
+	 * @return AdministratorModel|null
 	 */
-	public function getAdministratorInfoById(int $id): ?ModelAdminAdministrator
+	public function getAdministratorInfoById(int $id): ?AdministratorModel
 	{
 		return $this->daoAdminAdministrator->newQuery()->find($id);
 	}
@@ -70,9 +70,9 @@ final class ServiceAdminAdministrator
 	/**
 	 * @param string $token
 	 *
-	 * @return false|ModelAdminAdministrator|null
+	 * @return false|AdministratorModel|null
 	 */
-	public function getAdministratorByToken(string $token): null|false|ModelAdminAdministrator
+	public function getAdministratorByToken(string $token): null|false|AdministratorModel
 	{
 		$userid = $this->redis->get("administrator_token:$token");
 		if (!$userid) return null;

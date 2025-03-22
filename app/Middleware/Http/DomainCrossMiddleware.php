@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Middleware;
+namespace App\Middleware\Http;
 
 use Hyperf\Context\Context;
 use Psr\Http\Message\ResponseInterface;
@@ -10,10 +10,10 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * @MiddlewareDomainCross
- * @\app\Middleware\Http\MiddlewareDomainCross
+ * @DomainCrossMiddleware
+ * @\app\Middleware\Http\DomainCrossMiddleware
  */
-final class MiddlewareDomainCross implements MiddlewareInterface
+final class DomainCrossMiddleware implements MiddlewareInterface
 {
 	/**
 	 * @param ServerRequestInterface  $request

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Middleware\Authentication;
+namespace App\Middleware\Http;
 
 use App\Cache\Admin\AdminAdministratorCache;
 use App\Contract\ResponseContract;
-use App\Model\Admin\ModelAdminRoles;
+use App\Model\Admin\AdminRolesModel;
 use App\Service\Admin\ServiceAdminAdministrator;
 use Hyperf\Context\Context;
 use Psr\Http\Message\ResponseInterface;
@@ -14,10 +14,10 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * @MiddlewareAdminAuthentication
- * @\App\Middleware\Authentication\MiddlewareAdminAuthentication
+ * @AdminAuthenticationMiddleware
+ * @\App\Middleware\Http\AdminAuthenticationMiddleware
  */
-final readonly class MiddlewareAdminAuthentication implements MiddlewareInterface
+final readonly class AdminAuthenticationMiddleware implements MiddlewareInterface
 {
 	public function __construct(
 		private ResponseContract          $response,
@@ -54,7 +54,7 @@ final readonly class MiddlewareAdminAuthentication implements MiddlewareInterfac
 			return $this->response->auth('该账户已被封禁！');
 		}
 
-		/* @var ModelAdminRoles|null $role */
+		/* @var AdminRolesModel|null $role */
 		$role = $userinfo->roles()->first();
 
 		if (true !== $role?->status) {

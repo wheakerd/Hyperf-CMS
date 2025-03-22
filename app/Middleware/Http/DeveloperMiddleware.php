@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Middleware;
+namespace App\Middleware\Http;
 
 use App\Contract\ResponseContract;
 use Psr\Http\Message\ResponseInterface;
@@ -11,10 +11,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function Hyperf\Support\env;
 
 /**
- * @MiddlewareDeveloper
- * @\App\Middleware\Http\MiddlewareDeveloper
+ * @DeveloperMiddleware
+ * @\App\Middleware\Http\DeveloperMiddleware
  */
-final readonly class MiddlewareDeveloper implements MiddlewareInterface
+final readonly class DeveloperMiddleware implements MiddlewareInterface
 {
 	public function __construct(private ResponseContract $response)
 	{

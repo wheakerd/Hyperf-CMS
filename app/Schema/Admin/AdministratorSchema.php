@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace App\Schema\Admin;
 
 use App\Interface\SchemaInterface;
-use App\Model\Admin\ModelAdminAdministrator;
+use App\Model\Admin\AdministratorModel;
 use Carbon\Carbon;
 use Hyperf\Database\Schema\Blueprint;
 use Hyperf\Database\Schema\Schema;
 
 /**
- * @AdminAdministratorSchema
- * @\App\Schema\AdminAdministratorSchema
+ * @AdministratorSchema
+ * @\App\Schema\AdministratorSchema
  */
-final readonly class AdminAdministratorSchema implements SchemaInterface
+final readonly class AdministratorSchema implements SchemaInterface
 {
-	public function __construct(private ModelAdminAdministrator $model)
+	public function __construct(private AdministratorModel $model)
 	{
 	}
 
@@ -38,23 +38,20 @@ final readonly class AdminAdministratorSchema implements SchemaInterface
 					            'length'   => 1,
 				            ],
 			)->nullable(false)->comment('角色组ID，关联admin_role.id');
-			$blueprint->string('avatar', 100)->comment('头像');
+			$blueprint->string('avatar', 100)->nullable()->comment('头像');
 			$blueprint->integer('create_time', false, true)->nullable(false)->comment('创建时间');
 			$blueprint->integer('update_time', false, true)->nullable(false)->comment('更新时间');
-			$blueprint->integer('delete_time', false, true)->comment('删除时间，软删除');
+			$blueprint->integer('delete_time', false, true)->nullable()->comment('删除时间，软删除');
 		});
 		//  写入初始数据
-		$this->model->newInstance(
-			[
-				'username'    => 'admin',
-				'password'    => '123456',
-				'role_id'     => true,
-				'status'      => true,
-				'avatar'      => null,
-				'create_time' => Carbon::now()->getTimestamp(),
-				'update_time' => Carbon::now()->getTimestamp(),
-				'delete_time' => null,
-			],
-		)->save();
+		$model = $this->model->newInstance();
+
+		$model->username = 'admin';
+		$model->password = '123456';
+		$model->roleId   = 1;
+		$model->status   = 1;
+		$model->avatar   = null;
+
+		$model->save();
 	}
 }

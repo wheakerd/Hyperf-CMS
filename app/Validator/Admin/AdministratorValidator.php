@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Validator\Admin\Index;
+namespace App\Validator\Admin;
 
 
 use Hyperf\Validation\Request\FormRequest;
 
 /**
- * @LoginValidator
- * @\App\Validator\Admin\Index\LoginValidator
+ * @AdministratorValidator
+ * @\App\Validator\Admin\AdministratorValidator
  */
-final class LoginValidator extends FormRequest
+final class AdministratorValidator extends FormRequest
 {
 	protected array $scenes = [
 		'login' => [
