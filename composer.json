@@ -1,0 +1,86 @@
+{
+    "name": "hyperf/hyperf-skeleton",
+    "type": "project",
+    "scripts": {
+        "classes": "@composer dump-autoload -o",
+        "dev": [
+            "rm -rf runtime/container",
+            "@php bin/hyperf.php server:watch"
+        ],
+        "start": [
+            "rm -rf runtime/container",
+            "Composer\\Config::disableProcessTimeout",
+            "php bin/hyperf.php start"
+        ],
+        "build:pro": [
+            "rm -rf runtime/container",
+            "@php bin/hyperf.php run:build"
+        ]
+    },
+    "require": {
+        "php": "^8.3",
+        "ext-json": "*",
+        "ext-openssl": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-redis": "*",
+        "alibabacloud/oss-v2": "^0.2.0",
+        "hyperf/cache": "^3.1",
+        "hyperf/command": "^3.1",
+        "hyperf/config": "^3.1",
+        "hyperf/database": "^3.1",
+        "hyperf/db-connection": "^3.1",
+        "hyperf/engine": "^2.13",
+        "hyperf/framework": "^3.1",
+        "hyperf/guzzle": "^3.1",
+        "hyperf/http-server": "^3.1",
+        "hyperf/logger": "^3.1",
+        "hyperf/memory": "^3.1",
+        "hyperf/phar": "^3.1",
+        "hyperf/process": "^3.1",
+        "hyperf/redis": "^3.1",
+        "hyperf/translation": "^3.1",
+        "hyperf/validation": "^3.1",
+        "web-token/jwt-framework": "^4.0",
+        "wechatpay/wechatpay": "^1.4"
+    },
+    "require-dev": {
+        "hyperf/devtool": "^3.1",
+        "hyperf/watcher": "^3.1",
+        "spomky-labs/aes-key-wrap": "^7.0",
+        "swoole/ide-helper": "^5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.packagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        },
+        {
+            "type": "composer",
+            "url": "https://mirrors.tencent.com/composer/"
+        },
+        {
+            "type": "composer",
+            "url": "https://repo.huaweicloud.com/repository/php/"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "extra": {
+        "config": "App\\ConfigProvider"
+    }
+}
