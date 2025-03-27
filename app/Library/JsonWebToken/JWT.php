@@ -22,11 +22,11 @@ use Jose\Component\Signature\{
 
 /**
  * @JsonWebSignature
- * @\App\Library\JsonWebToken\JsonWebSignature
+ * @\App\Library\JWT\JsonWebSignature
  *
  * @see https://web-token.spomky-labs.com/
  */
-readonly class JsonWebToken
+readonly class JWT
 {
 	public function __construct(private AlgorithmManager $signatureAlgorithmManager, private JWK $jwk)
 	{
@@ -42,11 +42,7 @@ readonly class JsonWebToken
 	 *
 	 * @return string
 	 */
-	public function create(
-		mixed $payload = [],
-		int   $expirationTime = 60 * 60 * 24 * 30,
-		?int  $nowTime = null,
-	): string
+	public function create(mixed $payload = [], int $expirationTime = 60 * 60 * 24 * 30, ?int $nowTime = null): string
 	{
 		$nowTime ??= Carbon::now()->getTimestamp();
 
@@ -123,7 +119,9 @@ readonly class JsonWebToken
 	 *
 	 * @param string $token
 	 *
-	 * @return object
+	 * @return object{
+	 *
+	 * }
 	 */
 	public function getPayload(string $token): object
 	{
@@ -158,6 +156,6 @@ readonly class JsonWebToken
 
 		$jws = $jwsLoader->loadAndVerifyWithKey($token, $this->jwk, $recipient);
 
-		return (object)json_decode($jws->getPayload())->data;
+		return (object)json_decode($jws->getPayload());
 	}
 }

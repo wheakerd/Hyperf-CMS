@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace App\Security;
 
 use App\Cache\Admin\SystemDefaultCache;
-use App\Library\JsonWebToken\JsonWebAlgorithms;
-use App\Library\JsonWebToken\JsonWebToken;
+use App\Library\JsonWebToken\JWA;
+use App\Library\JsonWebToken\JWT;
 use Jose\Component\Core\JWK;
 
 /**
  * @AdminSecurity
  * @\App\Security\AdminSecurity
  */
-final readonly class AdminSecurity extends JsonWebToken
+final readonly class AdminSecurity extends JWT
 {
-	public function __construct(SystemDefaultCache $systemDefaultCache, JsonWebAlgorithms $jsonWebAlgorithms)
+	public function __construct(SystemDefaultCache $systemDefaultCache, JWA $jsonWebAlgorithms)
 	{
 		$key                       = $systemDefaultCache->getAdminKey();
 		$signatureAlgorithmManager = $jsonWebAlgorithms->create(['HS256']);

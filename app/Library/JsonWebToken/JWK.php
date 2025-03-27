@@ -10,9 +10,9 @@ use Jose\Component\KeyManagement\JWKFactory;
  * Key (JWK)
  *
  * @JWK
- * @\App\Library\JsonWebToken\JWK
+ * @\App\Library\JWT\JWK
  */
-final class JsonWebKey
+final class JWK
 {
 	/**
 	 * Octet String

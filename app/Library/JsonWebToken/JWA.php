@@ -12,27 +12,20 @@ use Jose\Component\Signature\Algorithm\HS256;
 use Jose\Component\Signature\Algorithm\PS256;
 
 /**
- * 单例模式
  * 算法管理器工厂
  *
- * @JsonWebAlgorithms
- * @\App\Library\JsonWebToken\JsonWebAlgorithms
+ * @JWA
+ * @\App\Library\JWT\JWA
  */
-final readonly class JsonWebAlgorithms
+final readonly class JWA
 {
 	/**
-	 * 算法管理器工厂
+	 * @param AlgorithmManagerFactory $algorithmManagerFactory 算法管理器工厂
 	 *
-	 * @var AlgorithmManagerFactory $algorithmManagerFactory
-	 */
-	private AlgorithmManagerFactory $algorithmManagerFactory;
-
-	/**
 	 * @noinspection SpellCheckingInspection
 	 */
-	public function __construct()
+	public function __construct(private AlgorithmManagerFactory $algorithmManagerFactory)
 	{
-		$this->algorithmManagerFactory = new AlgorithmManagerFactory();
 		$this->algorithmManagerFactory->add('A128CBC-HS256', new A128CBCHS256());
 		$this->algorithmManagerFactory->add('A256KW', new A256KW());
 		$this->algorithmManagerFactory->add('HS256', new HS256());

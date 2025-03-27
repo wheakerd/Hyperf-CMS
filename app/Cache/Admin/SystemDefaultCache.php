@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Cache\Admin;
 
 use App\Abstract\AbstractCache;
-use App\Library\JsonWebToken\JsonWebKey;
+use App\Library\JsonWebToken\JWK;
 use App\Proxy\DefaultRedisProxy;
 
 /**
@@ -22,7 +22,7 @@ final class SystemDefaultCache extends AbstractCache
 
 	public function setAdminKey(?string $key = null): void
 	{
-		$this->redis->set('admin_key', $key ?? JsonWebKey::createOctKey()->get('k'));
+		$this->redis->set('admin_key', $key ?? JWK::createOctKey()->get('k'));
 	}
 
 	public function getAdminKey(): false|string
