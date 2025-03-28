@@ -10,13 +10,11 @@ use App\Proxy\AdminRedisProxy;
  * @AdminAdministratorCache
  * @\App\Cache\Admin\AdminAdministratorCache
  */
-final class AdminAdministratorCache extends AbstractCache
+final readonly class AdminAdministratorCache extends AbstractCache
 {
-	private string $prefix = 'administrator_token';
-
 	public function __construct(AdminRedisProxy $redis)
 	{
-		parent::__construct($redis);
+		parent::__construct($redis, 'administrator_token');
 	}
 
 	private function getKey(string $key): string

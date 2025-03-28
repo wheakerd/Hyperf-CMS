@@ -21,9 +21,9 @@ use Psr\Http\Message\ResponseInterface;
  * @\App\Controller\Admin\IndexController
  */
 #[Controller(prefix: '/admin/index')]
-final class IndexController extends AbstractHttpController
+final readonly class IndexController extends AbstractHttpController
 {
-	public function __construct(private readonly ServiceAdminAdministrator $serviceAdminAdministrator)
+	public function __construct(private ServiceAdminAdministrator $serviceAdminAdministrator)
 	{
 	}
 

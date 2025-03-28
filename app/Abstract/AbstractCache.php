@@ -10,9 +10,9 @@ use RuntimeException;
  * @AbstractCache
  * @\App\Abstract\AbstractCache
  */
-abstract class AbstractCache
+abstract readonly class AbstractCache
 {
-	public function __construct(protected readonly Redis $redis)
+	public function __construct(protected Redis $redis, protected string $prefix = '')
 	{
 	}
 

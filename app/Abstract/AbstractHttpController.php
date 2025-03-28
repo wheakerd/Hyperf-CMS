@@ -13,7 +13,7 @@ use Psr\Container\ContainerInterface;
  * @AbstractHttpController
  * @\App\Controller\AbstractHttpController
  */
-abstract class AbstractHttpController
+abstract readonly class AbstractHttpController
 {
 	#[Inject]
 	protected ContainerInterface $container;

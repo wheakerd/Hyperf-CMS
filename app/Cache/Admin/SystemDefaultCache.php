@@ -13,7 +13,7 @@ use App\Proxy\DefaultRedisProxy;
  * @SystemDefaultCache
  * @\App\Cache\Admin\SystemDefaultCache
  */
-final class SystemDefaultCache extends AbstractCache
+final readonly class SystemDefaultCache extends AbstractCache
 {
 	public function __construct(DefaultRedisProxy $redis)
 	{
